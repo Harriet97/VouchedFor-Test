@@ -1,38 +1,28 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 const SpendingCal = (props) => {
   return (
-    <Card border="info" className="card" style={{ textAlign: "left" }}>
-      <Card.Header
-        style={{
-          textAlign: "center",
-          backgroundColor: "#07576a",
-          color: "white",
-          fontWeight: "bold",
-          padding: "10px",
-        }}
-      >
-        <h4>SPEND LESS</h4>
-      </Card.Header>
+    <Card border="info" className="card " style={{ textAlign: "center" }}>
+      <h4 className="cardHeader">SPEND LESS</h4>
       <Card.Body>
-        <p style={{ textAlign: "center" }}>
+        <h6>
           Try reducing your monthly spending to see how your forecast could
           improve!
-        </p>
-        <table>
+        </h6>
+        <table style={{ textAlign: "left" }}>
           <tbody>
             {props.expenditures.map((expenditure) => (
               <tr>
                 <td style={{ padding: "20px" }}>
                   <label>{expenditure.name}</label>
                 </td>
-                <td>
+                <td style={{ width: "25vw" }}>
                   <input
-                    style={{ width: "350px" }}
-                    className="slider"
+                    style={{ width: "100%" }}
                     type="range"
                     name="amount"
                     value={expenditure.amount}
@@ -53,7 +43,7 @@ const SpendingCal = (props) => {
           <span style={{ color: "#6db91c" }}>£{props.savings}</span> per month
         </h6>
         <Button
-          style={{ padding: "10px", textAlign: "center" }}
+          style={{ padding: "10px" }}
           variant="outline-success"
           size="sm"
           href="https://www.vouchedfor.co.uk/"
@@ -61,8 +51,40 @@ const SpendingCal = (props) => {
           Find ways to save
         </Button>
       </Card.Body>
-
-      <Card.Footer>Was this helpful?</Card.Footer>
+      {!props.voted && (
+        <Card.Footer>
+          <Row>
+            <Col className="text-right">
+              <a
+                href=""
+                style={{ color: "#0a787c", textAlign: "right", padding: "2%" }}
+              >
+                Was this helpful?
+              </a>
+              <a
+                href="#"
+                style={{ color: "green", padding: "2%", textAlign: "right" }}
+                onClick={() => props.vote("yes")}
+              >
+                <ion-icon
+                  style={{ verticalAlign: "middle", fontSize: "2em" }}
+                  name="thumbs-up-outline"
+                ></ion-icon>
+              </a>
+              <a
+                href="#"
+                onClick={() => props.vote("no")}
+                style={{ color: "#0a787c", textAlign: "right" }}
+              >
+                <ion-icon
+                  style={{ verticalAlign: "middle", fontSize: "2em" }}
+                  name="thumbs-down-outline"
+                ></ion-icon>
+              </a>
+            </Col>
+          </Row>
+        </Card.Footer>
+      )}
     </Card>
   );
 };

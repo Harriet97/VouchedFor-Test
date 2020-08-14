@@ -11,9 +11,9 @@ class App extends Component {
     JSON.parse(localStorage.getItem("data")) !== null
       ? Object.assign(JSON.parse(localStorage.getItem("data")), {
           savings: 0,
-          showVote: true,
+          voted: false,
         })
-      : Object.assign(data, { savings: 0, showVote: true });
+      : Object.assign(data, { savings: 0, voted: false });
 
   componentDidMount() {
     this.calculateSavings();
@@ -81,26 +81,38 @@ class App extends Component {
     );
   };
 
+  vote = (vote) => {
+    this.setState({
+      voted: true,
+    });
+    alert(`Thank you for voting ${vote}`);
+  };
+
   render() {
     return (
       <div className="App">
         <div className="header">
           <h5 className="headerText">Your Financial Plan</h5>
-          <h5 className="headerText">Tips and Blogs</h5>
         </div>
         <CardDeck className="cardDeck">
-          <YourIncome
-            incomeChange={this.incomeChange}
-            expenditureChange={this.expenditureChange}
-            incomes={this.state.incomes}
-            expenditures={this.state.expenditures}
-          />
-          <SpendingCal
-            income={this.state.monthlyIncome}
-            expenditures={this.state.expenditures}
-            savings={this.state.savings}
-            expenditureChange={this.expenditureChange}
-          />
+          <div class="col d-flex justify-content-center">
+            <YourIncome
+              incomeChange={this.incomeChange}
+              expenditureChange={this.expenditureChange}
+              incomes={this.state.incomes}
+              expenditures={this.state.expenditures}
+            />
+          </div>
+          <div class="col d-flex justify-content-center">
+            <SpendingCal
+              income={this.state.monthlyIncome}
+              expenditures={this.state.expenditures}
+              savings={this.state.savings}
+              expenditureChange={this.expenditureChange}
+              vote={this.vote}
+              voted={this.state.voted}
+            />
+          </div>
         </CardDeck>
       </div>
     );

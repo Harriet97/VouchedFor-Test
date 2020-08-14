@@ -5,26 +5,18 @@ import Col from "react-bootstrap/Col";
 
 const YourIncome = (props) => {
   return (
-    <Card className="card" border="info" style={{ textAlign: "left" }}>
-      <Card.Header
-        style={{
-          textAlign: "center",
-          backgroundColor: "#07576a",
-          color: "white",
-          fontWeight: "bold",
-          padding: "10px",
-        }}
-      >
-        <h4>YOUR INCOME AND SPEND</h4>
-      </Card.Header>
+    <Card className="card " border="info" style={{ textAlign: "left" }}>
+      <h4 className="cardHeader">YOUR INCOME AND SPEND</h4>
       <Card.Body>
         <Form>
-          <h6 style={{ color: "#0cb277", fontWeight: "700" }}>Annual income</h6>
+          <h6 style={{ color: "#0a787c", fontWeight: "700" }}>
+            Annual income:
+          </h6>
           {props.incomes.map((income) => (
             <Form.Row>
-              <Col sm={3}>
+              <Col>
                 <Form.Group inline>
-                  <Form.Label>{income.name}</Form.Label>
+                  <Form.Label>{income.name}:</Form.Label>
                   <Form.Control
                     type="text"
                     value={income.amount}
@@ -34,7 +26,7 @@ const YourIncome = (props) => {
                   ></Form.Control>
                 </Form.Group>
               </Col>
-              <Col sm={3}>
+              <Col>
                 <Form.Group inline>
                   <Form.Label>From age:</Form.Label>
                   <Form.Control
@@ -46,7 +38,7 @@ const YourIncome = (props) => {
                   ></Form.Control>
                 </Form.Group>
               </Col>
-              <Col sm={3}>
+              <Col>
                 <Form.Group inline>
                   <Form.Label>To age:</Form.Label>
                   <Form.Control
@@ -61,14 +53,14 @@ const YourIncome = (props) => {
             </Form.Row>
           ))}
 
-          <h6 style={{ color: "#0cb277", fontWeight: "700" }}>
-            Monthly spending
+          <h6 style={{ color: "#0a787c", fontWeight: "700" }}>
+            Monthly spending:
           </h6>
           {props.expenditures.map((expenditure) => (
             <Form.Row>
-              <Col sm={3}>
+              <Col>
                 <Form.Group inline>
-                  <Form.Label>{expenditure.name}</Form.Label>
+                  <Form.Label>{expenditure.name}:</Form.Label>
                   <Form.Control
                     type="text"
                     value={expenditure.amount}
@@ -78,7 +70,7 @@ const YourIncome = (props) => {
                   ></Form.Control>
                 </Form.Group>
               </Col>
-              <Col sm={3}>
+              <Col>
                 <Form.Group inline>
                   <Form.Label>From age:</Form.Label>
                   <Form.Control
@@ -90,7 +82,7 @@ const YourIncome = (props) => {
                   ></Form.Control>
                 </Form.Group>
               </Col>
-              <Col sm={3}>
+              <Col>
                 <Form.Group inline>
                   <Form.Label>To age:</Form.Label>
                   <Form.Control
