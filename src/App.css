@@ -1,12 +1,20 @@
 .App {
   text-align: center;
+  color: #07576a;
+  font-size: medium;
 }
 .header {
   width: 100vw;
-  background-color: #63e735;
+  background-color: #6db91c;
   height: 40px;
   margin-top: 0;
   margin-bottom: 20px;
+}
+
+.headerText {
+  color: white;
+  padding: 15px;
+  text-align: left;
 }
 
 .cardDeck {
@@ -15,4 +23,9 @@
 
 .card {
   margin-left: 20px;
+  justify-content: center;
+}
+
+.slider {
+  background: green;
 }

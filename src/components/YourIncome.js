@@ -6,12 +6,20 @@ import Col from "react-bootstrap/Col";
 const YourIncome = (props) => {
   return (
     <Card className="card" border="info" style={{ textAlign: "left" }}>
-      <Card.Header style={{ textAlign: "center" }}>
-        YOUR INCOME AND SPENDING
+      <Card.Header
+        style={{
+          textAlign: "center",
+          backgroundColor: "#07576a",
+          color: "white",
+          fontWeight: "bold",
+          padding: "10px",
+        }}
+      >
+        <h4>YOUR INCOME AND SPEND</h4>
       </Card.Header>
       <Card.Body>
         <Form>
-          <h3>Annual income</h3>
+          <h6 style={{ color: "#0cb277", fontWeight: "700" }}>Annual income</h6>
           {props.incomes.map((income) => (
             <Form.Row>
               <Col sm={3}>
@@ -53,7 +61,9 @@ const YourIncome = (props) => {
             </Form.Row>
           ))}
 
-          <h3>Monthly spending</h3>
+          <h6 style={{ color: "#0cb277", fontWeight: "700" }}>
+            Monthly spending
+          </h6>
           {props.expenditures.map((expenditure) => (
             <Form.Row>
               <Col sm={3}>

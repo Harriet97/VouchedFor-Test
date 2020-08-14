@@ -37,37 +37,22 @@ class App extends Component {
 
     this.setState({
       savings: savings,
+      monthlyIncome: monthlyIncome,
     });
   };
 
-  // incomeChange = (e) => {
-  //   const index = this.state.incomes.findIndex((x) => x.name === e.target.id);
-  //   const value = e.target.value;
-  //   const name = e.target.name;
-  //   console.log(this.state.incomes[index][name]);
-
-  //   this.setState(
-  //     (prevState) => ({
-  //       incomes: {
-  //         ...prevState.incomes,
-  //         [prevState.incomes[index][name]]: value,
-  //       },
-  //     }),
-
-  //     () => {
-  //       localStorage.setItem("data", JSON.stringify(this.state));
-  //       this.calculateSavings();
-  //     }
-  //   );
-  // };
-
   incomeChange = (e) => {
-    const index = this.state.incomes.findIndex((x) => x.name === e.target.id);
-    this.state.incomes[index][e.target.name] = e.target.value;
+    const index = this.state.incomes.findIndex(
+      (inc) => inc.name === e.target.id
+    );
+    const value = e.target.value;
+    const name = e.target.name;
 
     this.setState(
-      {
-        incomes: this.state.incomes,
+      (prevState) => {
+        const newIncomes = [...prevState.incomes];
+        newIncomes[index][name] = value;
+        return { incomes: newIncomes };
       },
       () => {
         localStorage.setItem("data", JSON.stringify(this.state));
@@ -77,15 +62,17 @@ class App extends Component {
   };
 
   expenditureChange = (e) => {
-    console.log(e);
     const index = this.state.expenditures.findIndex(
-      (x) => x.name === e.target.id
+      (exp) => exp.name === e.target.id
     );
-    this.state.expenditures[index][e.target.name] = e.target.value;
+    const value = e.target.value;
+    const name = e.target.name;
 
     this.setState(
-      {
-        expenditures: this.state.expenditures,
+      (prevState) => {
+        const newExpenditures = [...prevState.expenditures];
+        newExpenditures[index][name] = value;
+        return { expenditures: newExpenditures };
       },
       () => {
         localStorage.setItem("data", JSON.stringify(this.state));
@@ -97,7 +84,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="header"></div>
+        <div className="header">
+          <h5 className="headerText">Your Financial Plan</h5>
+          <h5 className="headerText">Tips and Blogs</h5>
+        </div>
         <CardDeck className="cardDeck">
           <YourIncome
             incomeChange={this.incomeChange}
@@ -106,6 +96,7 @@ class App extends Component {
             expenditures={this.state.expenditures}
           />
           <SpendingCal
+            income={this.state.monthlyIncome}
             expenditures={this.state.expenditures}
             savings={this.state.savings}
             expenditureChange={this.expenditureChange}
