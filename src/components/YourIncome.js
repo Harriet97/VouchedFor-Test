@@ -21,6 +21,8 @@ const YourIncome = (props) => {
                     type="text"
                     value={income.amount}
                     name="amount"
+                    id={income.name}
+                    onChange={props.incomeChange}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -30,7 +32,9 @@ const YourIncome = (props) => {
                   <Form.Control
                     type="text"
                     value={income.from_age}
+                    id={income.name}
                     name="from_age"
+                    onChange={props.incomeChange}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -40,7 +44,9 @@ const YourIncome = (props) => {
                   <Form.Control
                     type="text"
                     value={income.to_age}
+                    id={income.name}
                     name="to_age"
+                    onChange={props.incomeChange}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -48,15 +54,17 @@ const YourIncome = (props) => {
           ))}
 
           <h3>Monthly spending</h3>
-          {props.expenditures.map((income) => (
+          {props.expenditures.map((expenditure) => (
             <Form.Row>
               <Col sm={3}>
                 <Form.Group inline>
-                  <Form.Label>{income.name}</Form.Label>
+                  <Form.Label>{expenditure.name}</Form.Label>
                   <Form.Control
                     type="text"
-                    value={income.amount}
+                    value={expenditure.amount}
                     name="amount"
+                    id={expenditure.name}
+                    onChange={props.expenditureChange}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -65,8 +73,10 @@ const YourIncome = (props) => {
                   <Form.Label>From age:</Form.Label>
                   <Form.Control
                     type="text"
-                    value={income.from_age}
+                    value={expenditure.from_age}
                     name="from_age"
+                    id={expenditure.name}
+                    onChange={props.expenditureChange}
                   ></Form.Control>
                 </Form.Group>
               </Col>
@@ -75,8 +85,10 @@ const YourIncome = (props) => {
                   <Form.Label>To age:</Form.Label>
                   <Form.Control
                     type="text"
-                    value={income.to_age}
+                    value={expenditure.to_age}
+                    id={expenditure.name}
                     name="to_age"
+                    onChange={props.expenditureChange}
                   ></Form.Control>
                 </Form.Group>
               </Col>

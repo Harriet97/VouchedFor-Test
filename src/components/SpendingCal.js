@@ -2,6 +2,8 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
+import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
+import RangeSlider from "react-bootstrap-range-slider";
 
 const SpendingCal = (props) => {
   return (
@@ -18,11 +20,14 @@ const SpendingCal = (props) => {
             <Col sm={3}>
               <Form.Group>
                 <Form.Label>{expenditure.name}</Form.Label>
+
                 <Form.Control
                   type="range"
                   className="range"
                   name="amount"
                   value={expenditure.amount}
+                  tooltip="true"
+                  id={expenditure.name}
                   min="0"
                   max="2000"
                   step="1"

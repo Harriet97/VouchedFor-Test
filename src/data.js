@@ -25,7 +25,6 @@ const data = {
     },
     {
       amount: 1199,
-
       from_age: 30,
       to_age: 65,
       frequency: "monthly",
