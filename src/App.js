@@ -45,7 +45,7 @@ class App extends Component {
     const index = this.state.incomes.findIndex(
       (inc) => inc.name === e.target.id
     );
-    const value = e.target.value;
+    const value = e.target.value.split("£").join("").split(",").join("");
     const name = e.target.name;
 
     this.setState(
@@ -65,7 +65,7 @@ class App extends Component {
     const index = this.state.expenditures.findIndex(
       (exp) => exp.name === e.target.id
     );
-    const value = e.target.value;
+    const value = e.target.value.split("£").join("").split(",").join("");
     const name = e.target.name;
 
     this.setState(

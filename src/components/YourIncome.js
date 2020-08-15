@@ -19,7 +19,9 @@ const YourIncome = (props) => {
                   <Form.Label>{income.name}:</Form.Label>
                   <Form.Control
                     type="text"
-                    value={income.amount}
+                    value={`£${income.amount
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
                     name="amount"
                     id={income.name}
                     onChange={props.incomeChange}
@@ -63,7 +65,9 @@ const YourIncome = (props) => {
                   <Form.Label>{expenditure.name}:</Form.Label>
                   <Form.Control
                     type="text"
-                    value={expenditure.amount}
+                    value={`£${expenditure.amount
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
                     name="amount"
                     id={expenditure.name}
                     onChange={props.expenditureChange}

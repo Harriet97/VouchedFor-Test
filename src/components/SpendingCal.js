@@ -33,14 +33,22 @@ const SpendingCal = (props) => {
                     onChange={props.expenditureChange}
                   ></input>
                 </td>
-                <td style={{ textAlign: "right" }}>{expenditure.amount}</td>
+                <td style={{ textAlign: "right" }}>
+                  £
+                  {expenditure.amount
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
         <h6 style={{ padding: "20px" }}>
           This means you're saving{" "}
-          <span style={{ color: "#6db91c" }}>£{props.savings}</span> per month
+          <span style={{ color: "#6db91c" }}>
+            £{props.savings.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </span>{" "}
+          per month
         </h6>
         <Button
           style={{ padding: "10px" }}
