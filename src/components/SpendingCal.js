@@ -46,7 +46,9 @@ const SpendingCal = (props) => {
           style={{ padding: "10px" }}
           variant="outline-success"
           size="sm"
-          href="https://www.vouchedfor.co.uk/"
+          //   href="https://www.vouchedfor.co.uk/"
+          //   target="_blank"
+          onClick={() => window.open("https://www.vouchedfor.co.uk/", "_blank")}
         >
           Find ways to save
         </Button>
